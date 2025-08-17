@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>팝업 예제</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+    }
+
+    /* 공통 팝업 스타일 */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup {
+      background: white;
+      width: 90%;
+      max-width: 450px;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .buttons button {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 6px;
+      margin: 0 5px;
+    }
+
+    .close-btn {
+      background: #ddd;
+    }
+
+    .confirm-btn {
+      background: #007aff;
+      color: white;
+    }
+
+    .yellow-btn {
+      width: 100%;
+      background: #ffeb00;
+      border: none;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+
+  <!-- 첫 번째 팝업 -->
+  <div class="overlay" id="popup1">
+    <div class="popup">
+      <p>
+        이용자보호조치로 인해 오픈채팅 사용이 제한되었습니다.<br><br>
+        이는 안전한 서비스 제공을 위한 임시 조치이며<br>
+        본인인증 시 보호조치를 완화시킬 수 있습니다.<br><br>
+        보호조치가 완화되면 일정 시간 간격으로<br>
+        오픈채팅방을 생성하거나 참여할 수 있습니다.
+      </p>
+      <div class="buttons">
+        <button class="close-btn" onclick="closePopup()">닫기</button>
+        <button class="confirm-btn" onclick="showSecondPopup()">완화하기</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 두 번째 팝업 -->
+  <div class="overlay hidden" id="popup2">
+    <div class="popup">
+      <h2>톡안녕패스로<br>이용자보호조치를 완화하세요.</h2>
+      <p style="color: gray;">
+        모두를 위한 카톡 안녕가이드에서<br>
+        이용자보호조치에 대해 더 자세히 알아보세요.<br>
+        <a href="#" style="color: blue; text-decoration: underline;">사이트 바로가기</a>
+      </p>
+      <p>
+        시스템이 비정상적인 이용환경 및 패턴을 감지하여<br>
+        이용자 보호조치가 실행중입니다.<br><br>
+        이는 안전한 서비스를 제공하기 위한 한시적 조치이며,<br>
+        국내 번호를 사용중인 카카오 인증 서비스 가입자일 경우<br>
+        카카오 인증서로 본인임을 증명하여 보호조치를<br>
+        일시적으로 완화 또는 해제할 수 있습니다.
+      </p>
+      <label>
+        <input type="checkbox" checked> [필수] 개인정보 수집 및 이용 동의
+      </label>
+      <button class="yellow-btn">본인인증하기</button>
+    </div>
+  </div>
+
+  <script>
+    function closePopup() {
+      document.getElementById("popup1").style.display = "none";
+    }
+
+    function showSecondPopup() {
+      document.getElementById("popup1").classList.add("hidden");
+      document.getElementById("popup2").classList.remove("hidden");
+    }
+  </script>
+
+</body>
+</html>
