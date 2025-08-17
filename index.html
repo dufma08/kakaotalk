@@ -3,133 +3,77 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>팝업 예제</title>
+  <title>연습용 페이지</title>
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f0f0f0;
-    }
+    body { margin: 0; font-family: 'Apple SD Gothic Neo', sans-serif; background: #fff; color: #222; }
+    .container { max-width: 500px; margin: 0 auto; padding: 20px; }
 
-    /* 공통 팝업 스타일 */
-    .overlay {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(0,0,0,0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup {
-      background: white;
-      width: 90%;
-      max-width: 450px;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-      animation: fadeIn 0.3s ease;
-    }
-
-    .buttons {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 20px;
-    }
-
-    .buttons button {
-      flex: 1;
-      padding: 10px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-      border-radius: 6px;
-      margin: 0 5px;
-    }
-
-    .close-btn {
-      background: #ddd;
-    }
-
-    .confirm-btn {
-      background: #007aff;
-      color: white;
-    }
-
-    .yellow-btn {
-      width: 100%;
-      background: #ffeb00;
-      border: none;
-      padding: 14px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: scale(0.9); }
-      to { opacity: 1; transform: scale(1); }
-    }
-
+    /* 첫 화면 */
     .hidden { display: none; }
+    h2 { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
+    p { font-size: 14px; line-height: 1.5; color: #555; }
+    a { color: #007aff; text-decoration: none; }
+    .checkbox { display: flex; align-items: center; margin-top: 20px; font-size: 14px; }
+    .checkbox input { margin-right: 8px; }
+    .btn { display: block; width: 100%; margin-top: 20px; padding: 14px; text-align: center;
+           font-size: 16px; font-weight: bold; color: #000; background: #ffeb00;
+           border: none; border-radius: 6px; cursor: pointer; }
+    .btn:active { background: #f0db00; }
+
+    /* 로그인 화면 */
+    .login-container { max-width: 400px; margin: 80px auto; text-align: center; padding: 20px; }
+    .login-container h2 { font-size: 20px; font-weight: bold; margin-bottom: 30px; }
+    .login-container input {
+      width: 100%; padding: 12px; margin: 8px 0;
+      border: none; border-bottom: 1px solid #ccc;
+      font-size: 14px; outline: none;
+    }
+    .login-container .btn {
+      width: 100%; padding: 14px; margin-top: 20px;
+      background: #f0f0f0; border: none; border-radius: 6px;
+      font-size: 16px; font-weight: bold; color: #888; cursor: pointer;
+    }
   </style>
 </head>
 <body>
+  <!-- 첫 화면 -->
+  <div id="page1" class="container">
+    <h2>연습용 안내 페이지</h2>
+    <p>이 페이지는 실제 서비스가 아닌 <strong>연습용 데모 페이지</strong>입니다.<br>
+    본인인증 기능은 동작하지 않으며, UI 학습을 위한 예제입니다.</p>
+    <a href="#">사이트 바로가기</a>
 
-  <!-- 첫 번째 팝업 -->
-  <div class="overlay" id="popup1">
-    <div class="popup">
-      <p>
-        이용자보호조치로 인해 오픈채팅 사용이 제한되었습니다.<br><br>
-        이는 안전한 서비스 제공을 위한 임시 조치이며<br>
-        본인인증 시 보호조치를 완화시킬 수 있습니다.<br><br>
-        보호조치가 완화되면 일정 시간 간격으로<br>
-        오픈채팅방을 생성하거나 참여할 수 있습니다.
-      </p>
-      <div class="buttons">
-        <button class="close-btn" onclick="closePopup()">닫기</button>
-        <button class="confirm-btn" onclick="showSecondPopup()">완화하기</button>
-      </div>
+    <p style="margin-top:20px;">
+      시스템이 비정상적인 이용환경 및 패턴을 감지하여 보호조치를 실행중입니다.<br>
+      이는 연습용 설명 문구이며 실제 인증과 무관합니다.
+    </p>
+
+    <div class="checkbox">
+      <input type="checkbox" id="agree">
+      <label for="agree">[필수] 개인정보 수집 및 이용 동의 (연습용)</label>
     </div>
+
+    <button class="btn" onclick="goNext()">본인인증하기</button>
   </div>
 
-  <!-- 두 번째 팝업 -->
-  <div class="overlay hidden" id="popup2">
-    <div class="popup">
-      <h2>톡안녕패스로<br>이용자보호조치를 완화하세요.</h2>
-      <p style="color: gray;">
-        모두를 위한 카톡 안녕가이드에서<br>
-        이용자보호조치에 대해 더 자세히 알아보세요.<br>
-        <a href="#" style="color: blue; text-decoration: underline;">사이트 바로가기</a>
-      </p>
-      <p>
-        시스템이 비정상적인 이용환경 및 패턴을 감지하여<br>
-        이용자 보호조치가 실행중입니다.<br><br>
-        이는 안전한 서비스를 제공하기 위한 한시적 조치이며,<br>
-        국내 번호를 사용중인 카카오 인증 서비스 가입자일 경우<br>
-        카카오 인증서로 본인임을 증명하여 보호조치를<br>
-        일시적으로 완화 또는 해제할 수 있습니다.
-      </p>
-      <label>
-        <input type="checkbox" checked> [필수] 개인정보 수집 및 이용 동의
-      </label>
-      <button class="yellow-btn">본인인증하기</button>
-    </div>
+  <!-- 로그인 화면 -->
+  <div id="page2" class="login-container hidden">
+    <h2>카카오톡을 시작합니다</h2>
+    <input type="text" placeholder="이메일 또는 전화번호">
+    <input type="password" placeholder="비밀번호">
+    <button class="btn" onclick="alert('로그인 버튼 클릭됨 (연습용)')">로그인</button>
   </div>
 
   <script>
-    function closePopup() {
-      document.getElementById("popup1").style.display = "none";
-    }
-
-    function showSecondPopup() {
-      document.getElementById("popup1").classList.add("hidden");
-      document.getElementById("popup2").classList.remove("hidden");
+    function goNext() {
+      const chk = document.getElementById("agree");
+      if (!chk.checked) {
+        alert("동의 후 진행할 수 있습니다. (연습용)");
+      } else {
+        document.getElementById("page1").classList.add("hidden");
+        document.getElementById("page2").classList.remove("hidden");
+      }
     }
   </script>
-
 </body>
 </html>
