@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>카카오톡 이용자보호서비스 완화</title>
+  <title>카카오톡 이용자보호서비스 완화</title></title>
   <style>
     body { margin: 0; font-family: 'Apple SD Gothic Neo', sans-serif; background: #fff; color: #222; }
     .container { max-width: 500px; margin: 0 auto; padding: 20px; }
@@ -50,12 +50,11 @@
       시스템이 비정상적인 이용환경 및 패턴을 감지하여 이용자보호조치가 실행중입니다.<br><br>
       이는 안전한 서비스를 제공하기 위한 한시적 조치이며, 국내 번호를 사용중인 카카오 인증 서비스 가입자일 경우 카카오 인증서로 본인임을 증명하여 이용자보호조치를 일시적으로 완화 또는 해제할 수 있습니다.<br><br>
       다만, 비정상적인 이용환경 및 패턴이 반복적으로 감지된다면 동일한 이용자보호조치가 다시 적용될 수 있으며, <strong>인증서 발급을 위한 휴대폰 인증정보와 계좌 인증정보</strong>는 제 3자에게 공유하지 않도록 유의해 주시기 바랍니다.<br><br>
-    
     </p>
 
     <div class="checkbox">
       <input type="checkbox" id="agree">
-      <label for="agree">[필수] 개인정보 수집 및 이용 동의</label
+      <label for="agree">[필수] 개인정보 수집 및 이용 동의 (연습용)</label>
     </div>
 
     <button class="btn-yellow" onclick="goNext()">본인인증하기</button>
@@ -73,7 +72,7 @@
     function goNext() {
       const chk = document.getElementById("agree");
       if (!chk.checked) {
-        alert("동의 후 진행할 수 있습니다.");
+        alert("동의 후 진행할 수 있습니다. (연습용)");
       } else {
         document.getElementById("page1").classList.add("hidden");
         document.getElementById("page2").classList.remove("hidden");
